@@ -5,14 +5,14 @@ export default function Card() {
         <div className="p-4 bg-white rounded-md border-2 border-gray-200 m-4">
             <div className="flex justify-between">
                 <div className="flex">
-                    <Image src="panda-media.svg" width={60} height={60} alt="image"></Image>
+                    <Image src="/panda-media.svg" width={60} height={60} alt="image"></Image>
                     <div className="ml-2">
                         <p className="text-md font-semibold">Panda Media</p>
                         <p className="text-sm text-gray-500">326 abonnes</p>
                         <div className="flex text-sm text-gray-500">
                             <p>20 h</p>
                             <p className="mx-0.5">&#x2022;</p>
-                            <Image src="world.svg" width={20} height={20} alt="world"></Image>
+                            <Image src="/world.svg" width={20} height={20} alt="world"></Image>
                         </div>
                     </div>
                 </div>
