@@ -9,11 +9,31 @@ import Modal from "@/components/Modal";
 import Tool from "@/components/Tool";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Database } from '@/supabase';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export default function Home() {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  const router = useRouter();
+  const supabase = createClientComponentClient<Database>()
+
+  useEffect(() => {
+    const getSession = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      console.log(data);
+      if (error || !data.session) {
+        setUserLoggedIn(false);
+      } else {
+        setUserLoggedIn(true);
+      }
+    }
+    getSession();
+  }, []);
 
   return (
     <main className="w-full">
@@ -21,7 +41,7 @@ export default function Home() {
       <div className="px-40 h-[100vh]">
         <nav className="flex w-full justify-between items-center py-16">
           <Logo />
-          <LoginButton onClick={() => setIsModalOpen(true)}/>
+          <LoginButton onClick={userLoggedIn ? () => router.push("/dashboard") : () => setIsLoginModalOpen(true)} text={userLoggedIn ? "Dashboard" : "Log In"} />
         </nav>
         <div className="flex justify-center">
           <div className="flex border-2 border-gray-200 justify-center bg-gray-100 rounded-2xl items-center w-80">
@@ -41,7 +61,7 @@ export default function Home() {
           <p className="text-2xl text-center text-gray-500 font-normal">We are ready to be your creator co-pilot. Generate ideas, SEO friendly<br></br> blogs & Linkedin posts from videos, Audiograms</p>
         </div>
         <div className="flex justify-center mt-12">
-          <button onClick={() => setIsModalOpen(true)} className="bg-gradient-to-t from-pink3 to-pink1 text-white p-2 rounded border-2 border-pink-500 font-medium">Login and explore &gt;</button>
+          <button onClick={userLoggedIn ? () => router.push("/dashboard") : () => setIsLoginModalOpen(true)} className="bg-gradient-to-t from-pink3 to-pink1 text-white p-2 rounded border-2 border-pink-500 font-medium">{userLoggedIn ? "Dashboard >" : "Login and explore >"}</button>
         </div>
         <div className="flex justify-center mt-12">
           <Image src="arrow-down.svg" width={15} height={15} alt="arrow-down"></Image>
@@ -56,21 +76,21 @@ export default function Home() {
         <h1 className="font-medium text-3xl py-5">Click on any tool below and explore</h1>
         <Image src="arrow-down-fancy.svg" width={15} height={15} alt="arrow-down-fancy"></Image>
         <div className="grid grid-cols-2 gap-5 w-full mt-4">
-          <Link href="/video-idea">
+          <Link href="/tools/video-idea">
             <Tool props={{
               name: "Video Idea Generator",
               desc: "Generate 10 unique ideas for your next viral video. Forget the creative block",
               iconSrc: "/video-gen-icon.png"
             }} />
           </Link>
-          <Link href="/audiogram">
+          <Link href="/tools/audiogram">
             <Tool props={{
               name: "⁠Free Audiogram Generator",
               desc: "Generate 10 unique ideas for your next viral video. Forget the creative block",
               iconSrc: "/audiogram-icon.png"
             }} />
           </Link>
-          <Link href="/seo-blog-generator">
+          <Link href="/tools/seo-blog-generator">
             <Tool props={{
               name: "YouTube video to SEO Blog Generator",
               desc: "Generate 10 unique ideas for your next viral video. Forget the creative block",
@@ -78,7 +98,7 @@ export default function Home() {
             }} />
           </Link>
 
-          <Link href="/linkedin-post-generator">
+          <Link href="/tools/linkedin-post-generator">
             <Tool props={{
               name: "YouTube video to LinkedIn Post Generator",
               desc: "Generate 10 unique ideas for your next viral video. Forget the creative block",
@@ -90,9 +110,9 @@ export default function Home() {
         <HeroSubscribe />
         {/* footer */}
         <HeroFooter />
-        
+
         {/* Login Modal */}
-        <LoginModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <LoginModal isModalOpen={isLoginModalOpen} setIsModalOpen={setIsLoginModalOpen} />
       </div>
     </main>
   );
