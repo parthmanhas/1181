@@ -1,14 +1,12 @@
 import Card from "@/components/Card";
+import Logo from "@/components/Logo";
 import Image from "next/image";
 
 export default function AudioGram() {
     return (
         <main className="flex w-full">
             <div className="w-[60%] py-14 px-28 h-[100vh]">
-                <div className="flex justify-start">
-                    <Image src="mark.svg" width={25} height={25} alt="logo"></Image>
-                    <h1 className="ml-3 font-bold text-xl">Creatertools.ai</h1>
-                </div>
+                <Logo />
                 <h1 className="text-4xl font-semibold mt-10">Audiogram</h1>
                 <p className="mt-5 font-medium text-gray-500">Generate 2 charts for hearing tests</p>
                 <form className="mt-10">

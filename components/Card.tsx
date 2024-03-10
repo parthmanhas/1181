@@ -23,11 +23,11 @@ export default function Card() {
             <p className="flex justify-end text-gray-500 mt-3">...see more</p>
             <p className="flex justify-start mt-3 font-semibold text-blue-600 text-sm">See translation</p>
             <div className="mt-5 flex items-center text-sm">
-                <Image className="mr-3" src="thumbs-up.svg" width={30} height={30} alt="reaction"></Image>
-                <Image className="mr-3" src="clap.svg" width={30} height={30} alt="reaction"></Image>
-                <Image className="mr-3" src="heart.svg" width={30} height={30} alt="reaction"></Image>
-                <Image className="mr-3" src="love.svg" width={30} height={30} alt="reaction"></Image>
-                <Image className="mr-3" src="confused.svg" width={30} height={30} alt="reaction"></Image>
+                <Image className="mr-3" src="/thumbs-up.svg" width={30} height={30} alt="reaction"></Image>
+                <Image className="mr-3" src="/clap.svg" width={30} height={30} alt="reaction"></Image>
+                <Image className="mr-3" src="/heart.svg" width={30} height={30} alt="reaction"></Image>
+                <Image className="mr-3" src="/love.svg" width={30} height={30} alt="reaction"></Image>
+                <Image className="mr-3" src="/confused.svg" width={30} height={30} alt="reaction"></Image>
                 <p className="text-gray-500">88</p>
                 <p className="text-gray-500 mx-3">&#x2022;</p>
                 <p className="text-gray-500">4 Comments</p>
