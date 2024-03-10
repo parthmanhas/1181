@@ -1,8 +1,16 @@
+'use client';
+
+import Logo from "@/components/Logo";
+import Modal from "@/components/Modal";
 import Tool from "@/components/Tool";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <main className="w-full">
       {/* hero page 1 */}
@@ -12,7 +20,7 @@ export default function Home() {
             <Image src="mark.svg" width={25} height={25} alt="logo"></Image>
             <h1 className="ml-3 font-bold text-xl">Creatertools.ai</h1>
           </div>
-          <button className="flex justify-center border-2 rounded p-2 border-gray-200 font-semibold text-sm"><Image src="user.svg" className="mr-1" width={20} height={20} alt="image"></Image>Log In</button>
+          <button onClick={() => setIsModalOpen(true)} className="flex justify-center border-2 rounded p-2 border-gray-200 font-semibold text-sm"><Image src="user.svg" className="mr-1" width={20} height={20} alt="image"></Image>Log In</button>
         </nav>
         <div className="flex justify-center">
           <div className="flex border-2 border-gray-200 justify-center bg-gray-100 rounded-2xl items-center w-80">
@@ -32,7 +40,7 @@ export default function Home() {
           <p className="text-2xl text-center text-gray-500 font-normal">We are ready to be your creator co-pilot. Generate ideas, SEO friendly<br></br> blogs & Linkedin posts from videos, Audiograms</p>
         </div>
         <div className="flex justify-center mt-12">
-          <button className="bg-gradient-to-t from-pink3 to-pink1 text-white p-2 rounded border-2 border-pink-500 font-medium">Login and explore &gt;</button>
+          <button onClick={() => setIsModalOpen(true)} className="bg-gradient-to-t from-pink3 to-pink1 text-white p-2 rounded border-2 border-pink-500 font-medium">Login and explore &gt;</button>
         </div>
         <div className="flex justify-center mt-12">
           <Image src="arrow-down.svg" width={15} height={15} alt="arrow-down"></Image>
@@ -95,6 +103,22 @@ export default function Home() {
             <p className="ml-5">Terms and conditions</p>
           </div>
         </div>
+        
+        {/* Login Modal */}
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <div className="flex flex-col justify-center items-center w-full">
+            <Logo />
+            <div className="flex flex-col self-start w-full mt-5">
+              <label className="font-semibold mb-1">Email</label>
+              <input className="p-2 border-2 rounded-md border-gray-200" type="email" placeholder="Enter Email"></input>
+            </div>
+            <div className="flex flex-col self-start w-full mt-5">
+              <label className="font-semibold mb-1">Password</label>
+              <input className="p-2 border-2 rounded-md border-gray-200" type="password" placeholder="Enter Password"></input>
+            </div>
+            <button className="mt-8 text-white border-2 bg-gradient-to-t from-pink3 to-pink1 font-semibold border-pink-500 rounded-md px-5 py-1">Login</button>
+          </div>
+        </Modal>
       </div>
     </main>
   );
