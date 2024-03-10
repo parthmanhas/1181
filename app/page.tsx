@@ -1,5 +1,9 @@
 'use client';
 
+import HeroFooter from "@/components/HeroFooter";
+import HeroSubscribe from "@/components/HeroSubscribe";
+import LoginButton from "@/components/LoginButton";
+import LoginModal from "@/components/LoginModal";
 import Logo from "@/components/Logo";
 import Modal from "@/components/Modal";
 import Tool from "@/components/Tool";
@@ -15,12 +19,9 @@ export default function Home() {
     <main className="w-full">
       {/* hero page 1 */}
       <div className="px-40 h-[100vh]">
-        <nav className="flex w-full justify-between py-16">
-          <div className="flex justify-center">
-            <Image src="mark.svg" width={25} height={25} alt="logo"></Image>
-            <h1 className="ml-3 font-bold text-xl">Creatertools.ai</h1>
-          </div>
-          <button onClick={() => setIsModalOpen(true)} className="flex justify-center border-2 rounded p-2 border-gray-200 font-semibold text-sm"><Image src="user.svg" className="mr-1" width={20} height={20} alt="image"></Image>Log In</button>
+        <nav className="flex w-full justify-between items-center py-16">
+          <Logo />
+          <LoginButton onClick={() => setIsModalOpen(true)}/>
         </nav>
         <div className="flex justify-center">
           <div className="flex border-2 border-gray-200 justify-center bg-gray-100 rounded-2xl items-center w-80">
@@ -86,39 +87,12 @@ export default function Home() {
           </Link>
         </div>
         {/* Subcscribe section */}
-        <div className="grid grid-cols-2 w-full py-12 px-14 border-2 border-gray-100 rounded-lg bg-pink5 mt-16">
-          <div>
-            <h1 className="text-3xl font-semibold">Want to know more about<br></br> the tools?</h1>
-            <p className="mt-5 text-gray-500">Join the club and explore all the free tools...</p>
-          </div>
-          <div className="flex justify-end items-center">
-            <button className="bg-gradient-to-t from-pink3 to-pink1 text-white py-2 px-14 rounded border-2 border-pink-500 font-medium">Subscribe</button>
-          </div>
-        </div>
+        <HeroSubscribe />
         {/* footer */}
-        <div className="bg-gray-50 text-gray-500 w-full flex justify-between items-center p-5 mt-16 mb-5 rounded">
-          <p>© 1811 Labs. All rights reserved.</p>
-          <div className="flex">
-            <p>Privacy Policy</p>
-            <p className="ml-5">Terms and conditions</p>
-          </div>
-        </div>
+        <HeroFooter />
         
         {/* Login Modal */}
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <div className="flex flex-col justify-center items-center w-full">
-            <Logo />
-            <div className="flex flex-col self-start w-full mt-5">
-              <label className="font-semibold mb-1">Email</label>
-              <input className="p-2 border-2 rounded-md border-gray-200" type="email" placeholder="Enter Email"></input>
-            </div>
-            <div className="flex flex-col self-start w-full mt-5">
-              <label className="font-semibold mb-1">Password</label>
-              <input className="p-2 border-2 rounded-md border-gray-200" type="password" placeholder="Enter Password"></input>
-            </div>
-            <button className="mt-8 text-white border-2 bg-gradient-to-t from-pink3 to-pink1 font-semibold border-pink-500 rounded-md px-5 py-1">Login</button>
-          </div>
-        </Modal>
+        <LoginModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       </div>
     </main>
   );
