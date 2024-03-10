@@ -1,112 +1,100 @@
+import Tool from "@/components/Tool";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="w-full">
+      {/* hero page 1 */}
+      <div className="px-40 h-[100vh]">
+        <nav className="flex w-full justify-between py-16">
+          <div className="flex justify-center">
+            <Image src="mark.svg" width={25} height={25} alt="logo"></Image>
+            <h1 className="ml-3 font-bold text-xl">Creatertools.ai</h1>
+          </div>
+          <button className="flex justify-center border-2 rounded p-2 border-gray-200 font-semibold text-sm"><Image src="user.svg" className="mr-1" width={20} height={20} alt="image"></Image>Log In</button>
+        </nav>
+        <div className="flex justify-center">
+          <div className="flex border-2 border-gray-200 justify-center bg-gray-100 rounded-2xl items-center w-80">
+            <Image src="star.svg" width={15} height={15} alt="star"></Image>
+            <p className="px-1 font-medium">All the top creator tools in one place</p>
+            <Image src="star.svg" width={15} height={15} alt="star"></Image>
+          </div>
+        </div>
+        <div className="flex justify-center mt-10 relative">
+          <Image className="absolute top-6 right-32" src="star-sticker.svg" width={80} height={80} alt="star"></Image>
+          <Image className="absolute top-16 left-28" src="heart-sticker.svg" width={80} height={80} alt="heart"></Image>
+          <Image className="absolute bottom-[-200px] left-5" src="thumbs-up-sticker.svg" width={80} height={80} alt="thumbs-up"></Image>
+          <Image className="absolute bottom-[-100px] right-12" src="+1-sticker.svg" width={80} height={80} alt="+1"></Image>
+          <h1 className="text-6xl text-center"><Image className="inline" src="top-creator-heading.svg" width={450} height={450} alt="heading"></Image> for making <br></br>those <span className="font-medium">videos go viral 🚀</span></h1>
+        </div>
+        <div className="flex justify-center mt-10">
+          <p className="text-2xl text-center text-gray-500 font-normal">We are ready to be your creator co-pilot. Generate ideas, SEO friendly<br></br> blogs & Linkedin posts from videos, Audiograms</p>
+        </div>
+        <div className="flex justify-center mt-12">
+          <button className="bg-gradient-to-t from-pink3 to-pink1 text-white p-2 rounded border-2 border-pink-500 font-medium">Login and explore &gt;</button>
+        </div>
+        <div className="flex justify-center mt-12">
+          <Image src="arrow-down.svg" width={15} height={15} alt="arrow-down"></Image>
+          <p className="px-1 font-semibold text-pink2">scroll down to explore</p>
+          <Image src="arrow-down.svg" width={15} height={15} alt="arrow-down"></Image>
         </div>
       </div>
+      {/* hero page 2 */}
+      {/* tools information */}
+      <div className="flex flex-col items-center px-24 mb-5">
+        <p className="text-pink2 font-medium pt-8">All of our tools</p>
+        <h1 className="font-medium text-3xl py-5">Click on any tool below and explore</h1>
+        <Image src="arrow-down-fancy.svg" width={15} height={15} alt="arrow-down-fancy"></Image>
+        <div className="grid grid-cols-2 gap-5 w-full mt-4">
+          <Link href="/video-idea">
+            <Tool props={{
+              name: "Video Idea Generator",
+              desc: "Generate 10 unique ideas for your next viral video. Forget the creative block",
+              iconSrc: "/video-gen-icon.png"
+            }} />
+          </Link>
+          <Link href="/audiogram">
+            <Tool props={{
+              name: "⁠Free Audiogram Generator",
+              desc: "Generate 10 unique ideas for your next viral video. Forget the creative block",
+              iconSrc: "/audiogram-icon.png"
+            }} />
+          </Link>
+          <Link href="/seo-blog-generator">
+            <Tool props={{
+              name: "YouTube video to SEO Blog Generator",
+              desc: "Generate 10 unique ideas for your next viral video. Forget the creative block",
+              iconSrc: "/seo-blog-icon.png"
+            }} />
+          </Link>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          <Link href="/linkedin-post-generator">
+            <Tool props={{
+              name: "YouTube video to LinkedIn Post Generator",
+              desc: "Generate 10 unique ideas for your next viral video. Forget the creative block",
+              iconSrc: "/linkedin-icon.svg"
+            }} />
+          </Link>
+        </div>
+        {/* Subcscribe section */}
+        <div className="grid grid-cols-2 w-full py-12 px-14 border-2 border-gray-100 rounded-lg bg-pink5 mt-16">
+          <div>
+            <h1 className="text-3xl font-semibold">Want to know more about<br></br> the tools?</h1>
+            <p className="mt-5 text-gray-500">Join the club and explore all the free tools...</p>
+          </div>
+          <div className="flex justify-end items-center">
+            <button className="bg-gradient-to-t from-pink3 to-pink1 text-white py-2 px-14 rounded border-2 border-pink-500 font-medium">Subscribe</button>
+          </div>
+        </div>
+        {/* footer */}
+        <div className="bg-gray-50 text-gray-500 w-full flex justify-between items-center p-5 mt-16 mb-5 rounded">
+          <p>© 1811 Labs. All rights reserved.</p>
+          <div className="flex">
+            <p>Privacy Policy</p>
+            <p className="ml-5">Terms and conditions</p>
+          </div>
+        </div>
       </div>
     </main>
   );
